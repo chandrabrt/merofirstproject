@@ -1,0 +1,67 @@
+
+<style>
+    {% block style %}
+#sidebar {
+    overflow: hidden;
+    z-index: 3;
+}
+#sidebar .list-group {
+    width: 150px;
+
+    min-height: 22vh;
+}
+
+
+#sidebar .list-group-item {
+    border-radius: 0;
+    background-color: #333;
+    color: #ccc;
+    border-left: 0;
+    border-right: 0;
+    border-color: #2c2c2c;
+    white-space: nowrap;
+}
+
+    {% endblock %}
+</style>
+
+
+{% block body %}
+ <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-xs-1 p-l-0 p-r-0 collapse in" id="sidebar">
+            <div class="list-group panel">
+
+                <div class="dropdown">
+                  {% if request.user.is_authenticated %}
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="about-us" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #383838">
+                          {{ user.username }}
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="about-us">
+                          <a class="dropdown-item" href="{% url 'accounts:password_change'%}"><i class="fa fa-key" aria-hidden="true"></i>
+                              Password Change</a>
+                          <a class="dropdown-item" href="{% url 'accounts:logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                              Logout</a>
+                      </div>
+
+                  {% else %}
+                      <a href="{% url 'accounts:login' %}" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-user"></i> <span class="hidden-sm-down">Login</span></a>
+                      <a href="{% url 'accounts:signup' %}" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-user-plus"></i> <span class="hidden-sm-down">Sign Up</span></a>
+
+                  {% endif %}
+              </div>
+            </div>
+        </div>
+        <main class="col-md-9 col-xs-11">
+            <a href="#sidebar" data-toggle="collapse">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-times fa-stack-1x" aria-hidden="true"></i>
+                </span>
+</a>
+        </main>
+    </div>
+</div>
+{% include 'javascript.html' %}
+{% endblock body %}
+

@@ -1,0 +1,33 @@
+.navbar-inner {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #FFF;
+    z-index: 2;
+}
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav>li>a {
+    color: #FFF;
+}
+
+#first {
+  position: relative;
+  background-image: url(http://netdna.webdesignerdepot.com/uploads/2014/07/featured36.jpg);
+   background-repeat: no-repeat;
+  background-position:center;
+ -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 50vh;
+}
+
+#h1first {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FFF;
+}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body %}
+{% if request.user.is_authenticated %}
+    <p>Username:{{ user.username }}</p>
+    <p>email:{{ user.email }}</p>
+    <p>Name:{{ user.first_name }}{{ middle_name }}{{ last_name }}</p>
+    {% for n in image %}
+
+<img src="{{ n.photo.url }}" class="img-fluid" alt="Responsive image" style="height:30%; width: 30%">
+
+
+    {% endfor %}
+
+{% endif%}
+{% endblock body %}

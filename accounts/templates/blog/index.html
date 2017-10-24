@@ -1,0 +1,139 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+    <title>{% block head_title %}our blog{% endblock %}</title>
+
+
+<style>
+    {% block style %}
+        .item {
+            position:relative;
+            width:400px;
+            margin:20px auto;
+            cursor:pointer;
+            overflow:hidden;
+
+
+        }
+        .item img {
+            width:350px;
+            height:250px;
+        }
+        .item h2 {
+            font-family: 'Londrina Solid', serif;
+            font-size:40px;
+            margin:0;
+            padding:20px 0 5px 0;
+            text-align:center;
+        }
+        .item p {
+            padding: 0 18px;
+            text-align: center;
+            font-family: Helvetica, Arial, monospace;
+        }
+        .more-btn {
+            display: inline-block;
+            color: #FFF;
+            text-decoration: none;
+            font-family: Helvetica, Arial, cursive;
+            background: rgba(0, 163, 255, 0.7);
+            padding: 11px 25px;
+            margin-left: 34%;
+            margin-top:15px;
+            transition: background .2s linear;
+            -webkit-transition: background .2s linear;
+        }
+        .more-btn:hover {
+            background: rgba(53, 182, 255, 0.7);
+            transition: background .2s linear;
+            -webkit-transition: background .2s linear;
+        }
+
+        /* the second example */
+
+        .item .info2 {
+            width:350px;
+            height:250px;
+            background:rgba(0, 0, 0, 0.7);
+            position:absolute;
+            top:-340px;
+            left:-200px;
+            opacity:0;
+            color:#ffffff;
+            transform:rotate(-90deg);
+            -ms-transform:rotate(-90deg); /* IE 9 */
+            -webkit-transform:rotate(-90deg); /* Safari and Chrome */
+            transition:all .1s linear;
+            -webkit-transition:all .1s linear;
+
+        }
+        .item:hover .info2 {
+            left:0;
+            top:0;
+            opacity:1;
+            transform:rotate(0deg);
+            -ms-transform:rotate(0deg); /* IE 9 */
+            -webkit-transform:rotate(0deg); /* Safari and Chrome */
+            transition:opacity .2s linear, rotate .2s linear;
+            -webkit-transition:opacity .2s linear, rotate .2s linear;
+
+
+        }
+    {% endblock %}
+</style>
+{% block body%}
+    {% include 'blog/col.html' %}
+    <div class="row">
+        <div class=" col-md-12"></div>
+    </div>
+    {% block jumbotron %}
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="jumbotron" id="first">
+
+                    <h1 class="text-center" id="h1first">
+                        Welcome to our<br>
+                        Blog
+                    </h1>
+{% if request.user.is_superuser %}
+                        <a href="{% url 'blog:adminform' %}" class="fa fa-plus-circle fa-2x" aria-hidden="true"></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {% block content %}
+
+
+        <!---------------------------------------------------------------------------------->
+            <div class="container-fluid">
+                <div class="row">
+                    {% if all_posts %}
+                        {% for post in all_posts %}
+                            <div class="col-md-4 col-lg-4">
+                                <div class="item">
+
+                                    {% if post.image %}
+                                        <img src="{{ post.image.url }}" class="Responsive Image ">
+                                    {% endif %}
+
+                                    <div class="info2">
+                                        <h2>{{ post.title }}</h2>
+                                        <p style="color:red"> {{ post.description|safe }}</p>
+                                        <a href="{% url 'blog:blog_slug' post.slug %}" class="more-btn" style="text-decoration: none;">
+                                            Read more
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    {% else %}
+                        <h1>There is No Post to Display</h1>
+                    {% endif %}
+                </div>
+            </div>
+        <p style="padding-left: 2em"> {% include "blog/pagination.html" with page=page_obj %}</p>
+
+    {% endblock %}
+{% endblock body%}

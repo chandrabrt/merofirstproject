@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<title>{% block head_title %}website development{% endblock %}</title>
+<style>
+    {% block style %}
+
+    {% endblock %}
+</style>
+
+
+{% block jumbotron %}
+
+{% endblock %}
+
+{% block content %}
+
+
+        <div class="row" id="quote">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-8">
+                <strong style="color:#195B8B;font-size:50px;">THIS
+                PAGE IS UNDER CONSTRUCTION!
+                    This will be AVAILABLE VERY SOON.
+               Visit OUR BLOG. <a href="{% url 'blog:blog_index' %}"> NOW!!</a>
+                </strong>
+                <br>
+                <br>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+          <!------------------------------------------------->
+
+
+{% endblock %}
+
+

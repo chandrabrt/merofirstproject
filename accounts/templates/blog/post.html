@@ -1,0 +1,104 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<title>{% block head_title %}{{ post.slug}}{% endblock %}</title>
+{% block body %}
+    {% include 'blog/col.html' %}
+    <body id="backg" xmlns="http://www.w3.org/1999/html">
+    {% block content %}
+
+
+        <div class="container-fluid">
+
+            <div class="row" style=" height: 200px;padding-top: 20px">
+                <div class="col-sm-12">
+                    <center><button class="btn btn-primary" style="margin-top: 27px">{{ post.p_language }}</button></center>
+                    <h1><center>{{ post.title}}</center>
+                        <p style="font-size: 14px;text-align: right;">{{ post.publish }}</p>
+
+
+                    </h1>
+                </div>
+            </div><br/><br/>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10" style="text-align: justify;font-size:19px;font-family: sans-serif;padding-top:-5px">
+                    {% if request.user.is_superuser %}
+                        <a href="{% url 'blog:post-delete' post.slug%}" class="float-right"><i class="fa fa-trash-o fa-2x" aria-hidden="true" onclick="msg()"></i></a>
+                        <a href="{% url 'blog:update' post.slug%}" class="float-right" style="padding-left: 10px"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                    {% endif %}
+                    <p>
+                        {{ post.content|safe }}</p>
+                    <p>
+                        ------------------------------------------------------------------------------------------------------------------------------
+                    </p>
+                </div>
+                <div class="col-sm-1"></div>
+            </div></div>
+
+    {% endblock %}
+
+    <!-----footer---->
+    {% block footer %}
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+
+                    <span><h2>Leave a comment</h2></span><span>(email will not be published)</span>
+
+
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        {% if request.user.is_authenticated or comment.approved_comment %}
+                            <input class="btn btn-primary float-right" type="submit" name="submit" value="comment" />
+                        {% else %}
+                            <a class="btn btn-primary float-right" href="{% url 'accounts:login' %}">comment</a>
+                        {% endif %}
+                    </form>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+        <!------------------------------------------------------------------------->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    {% if post.comment_set.all %}
+
+                        <h2>{{ post.comment_set.all.count }} comments </h2>
+
+                        <div class="comments">
+                            {% for comment in post.comment_set.all %}
+                                <span>
+                                    <a href="{{ user.email }}"><strong>@{{ comment.name}}</strong> <small class="date">said on {{ comment.created_on }}</small></a>
+                                </span>
+
+                                {{ comment.comment|linebreaks }}
+
+                                <p><a href="#">Reply</a></p>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+
+                        <p>No comments here yet :</p>
+
+                    {% endif %}
+
+                    <br />
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+<!---------------------------------------------------------------------------------->
+
+    {% endblock %}
+    <script src="{% static "js/delete_popup.js" %}"></script>
+    </body>
+{% endblock body %}

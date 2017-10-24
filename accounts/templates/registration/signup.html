@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<style>
+    {% block style %}
+        #cd{
+
+        background-color: #FAFAFA;
+            padding-top: 10px;
+
+        }
+
+    {% endblock %}
+</style>
+{% block body %}
+    <body style="background: #0186E5;opacity: 0.9;min-height: 300px;">
+<div class="container-fluid" >
+<div class="row">
+
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4" id="cd">
+        <h1>Create an account</h1>
+        <p>Please, sign up using the following form:</p>
+
+        <form method="post" class="back" action=".">
+            {{ form|crispy }}
+            {% csrf_token %}
+            <p><input class="btn btn-block btn-primary" type="submit" value="Create my account"></p>
+        </form>
+
+        <div class="card-footer text-muted text-center">
+            Already have an account? <a href="{% url 'accounts:login' %}">Log in</a>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+</div>
+</body>
+{% endblock body %}

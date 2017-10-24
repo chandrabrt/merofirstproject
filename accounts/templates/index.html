@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+<title>{% block head_title %}home page{% endblock %}</title>
+<style>
+    {% block style %}
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #5a5a5a;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+  background-color: #777;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+
+}
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 2.25rem;
+    line-height: 1.4;
+      color: white;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+
+{% endblock %}
+</style>
+
+
+<!------------------------------------------------------------------------------------->
+{% block body%}
+    <body background="#fafafa">
+    {% include 'navbar.html' %}
+
+<main role="main">
+<div class="row">
+<div class="col-md-12">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="img-fluid" src="{% static 'img/coding.jpg' %}" alt="Responsive image">
+            <div class="container">
+              <div class="carousel-caption ">
+                <h1 style="font-family:Courier,cursive">WE ARE MADE</h1>
+                <h1 style="color: aquamarine;font-style: italic">___  of  ___</h1>
+                <h1 style="font-size:65px">IDEAS</h1>
+              <p style="color: white;">
+                  We are going to be connected with different countries having different ideas!</p>
+                <p><a class="btn btn-lg btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up today</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="img-fluid" alt="Responsive image" src="{% static 'img/python-wallpaper-hd-15.jpg' %}" >
+            <div class="container">
+              <div class="carousel-caption">
+                <h1 style="font-family:Courier,cursive">What Can</h1>
+                  <h1 style="color: aquamarine;font-style: italic">___  we  ___</h1>
+                <h1 style="font-size:65px">Do For You ?</h1>
+                <p style="color: white;">"We are providing a wide range of web development solutions
+                    locally as well as all over the world."</p>
+                <p><a class="btn btn-lg btn-primary" href="{% url 'accounts:dashboard' %}" role="button">learn more</a></p>
+              </div>
+            </div>
+          </div>
+            <div class="carousel-item">
+            <img class="img-fluid" alt="Responsive image" src="{% static 'img/Sunset_on_Everest.JPG' %}">
+            <div class="container">
+              <div class="carousel-caption ">
+                  <h2>"I made a decision to write for my readers, not to try to find more readers for my writing.” </h2>
+                    <p>-Seth Godin</p>
+                <p><a class="btn btn-lg btn-primary" href="{% url 'blog:blog_index' %}" role="button">Visit our Blog</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+</div>
+</div>
+
+
+      <!-- Marketing messaging and featurettes
+      ================================================== -->
+
+
+       <div class="container marketing" id="services">
+
+      <div class="row">
+        <div class="col-lg-4">
+            <a href="{% url 'accounts:dashboard' %}">
+          <img class="img-circle" src="{% static 'psd/web.png' %}" alt="Web Development" width="140" height="140">
+            </a>
+
+          <h2 class="text-primary">Web Development</h2>
+          <p>
+              We offers a wide range of website design and development solutions using Django and more!!.
+          </p>
+          <p><a class="btn bg-primary" href="{% url 'accounts:dashboard' %}" role="button" style="color: white">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+
+        <div class="col-lg-4">
+            <a href="{% url 'music:index' %}">
+          <img class="img-circle" src="{% static 'psd/music.jpg' %}" alt="Graphic Design" width="140" height="140">
+            </a>
+            <h2 class="text-primary">CoolMusic</h2>
+          <p>
+          CoolMusic is a web app that allows you to upload and store all of your music on the cloud.
+          </p>
+          <p><a class="btn bg-primary" href="{% url 'music:index' %}" role="button" style="color: white">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <a href="{% url 'blog:blog_index' %}">
+          <img class="img-circle" src="{% static 'psd/blog.jpeg' %}" alt="Generic placeholder image" width="140" height="140">
+            </a>
+            <h2 class="text-primary">Blog</h2>
+            <p>This is our official blog and you can get IT related stuff and more!! Stay connected with us!!</p>
+          <p><a class="btn bg-primary" href="{% url 'blog:blog_index' %}" role="button" style="color: white" >View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div>
+       </div>
+
+    </main>
+<!---------------------------------------------our websites-------------------------->
+<div class="row">
+    <div class="container">
+        <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="media">
+<img class="mr-3" src="{% static 'psd/zeftware.png' %}" alt="Zeftware">
+<div class="media-body">
+    <span><span style="color:#7E2924;font-size: 45px">Zeftware <span style="color: #0E2555">Solutions</span></span></span>
+    <p style="padding-left: 6em;font-weight: bold">Revolution. Years ahead.</p>
+
+<p>Zeftware Solutions is the leading software development house in Biratnagar. We adapt new and latest technology so we are able to develop state of the art products that is robust
+    and powerful for solving existing problems in specific niche.
+</p>
+  <a href="http://www.zeftware.com/" target="_blank" class="btn btn-warning float-right" style="color: #fafafa">Visit site &raquo;</a>
+</div>
+</div>
+    </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+    <!-- /.container -->
+{% include 'javascript.html' %}
+    </body>
+{% endblock body %}
+
+

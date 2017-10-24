@@ -1,0 +1,73 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<title>{% block head_title %}Contact Form{% endblock %}</title>
+{% block body %}
+{% include 'blog/col.html' %}
+    <body id="backg">
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-md-1" style="padding-top: 250px">
+
+                <span class="fa-stack fa-lg">
+                    <a href="https://twitter.com/lot_us_lot_us" target="_blank">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x"></i>
+                </a>
+                </span>
+               <br>
+                <span class="fa-stack fa-lg">
+                    <a href="https://www.facebook.com/soory.la" target="_blank">
+                <i class="fa fa-square-o fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x" aria-hidden="true"></i>
+                </a>
+
+                </span>
+                <br>
+                <span class="fa-stack fa-lg">
+                    <a href="https://plus.google.com/110584028311315413761" target="_blank">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-google-plus fa-stack-1x"></i>
+                </a>
+                </span>
+                <br>
+                <span class="fa-stack fa-lg">
+                    <a href="https://www.linkedin.com/in/lot-us-963a21121/" target="_blank">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x "></i>
+                </a>
+                </span>
+            </div>
+            <div class="col-md-7">
+                <h1 class='text-center' style="color: blue;font-family: 'Deja Vu Sans Mono',serif">Contact Us</h1>
+                <hr>
+                <br/>
+                <h5 style="color:blue" class="text-center">Got a questions? We'd love to hear from you.
+                    Send us a message and we'll respond as soon as possible!!</h5>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="form-actions">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Send message</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4" style="padding-top: 30px">
+                <img src="{% static '//img/contact.jpg' %}" class="img-fluid" alt="Responsive image" style="height:300px;width:290px;padding-left: 20px">
+                <br/>
+                <br/>
+                <h5 style="font-family: cursive"><a href="https://mail.google.com/"><span class="fa fa-envelope" aria-hidden="true"></span></a>EMAIL:
+                    <a href="https://mail.google.com/" style="color: #10496B;text-decoration: none"> chandra2khadka4@gmail.com</a></h5>
+                <h5 style="font-family: cursive"><a href="tel:+9779824376278";=""><span class="fa fa-phone-square" aria-hidden="true"></span></a>CALL US:
+                    <a href="tel:+9779824376278";="" style="color: #10496B;text-decoration: none"> +977&nbsp;9824376278</a></h5><br/>
+            </div>
+        </div>
+
+
+    </div>
+    <br/>
+    </body>
+{% endblock %}

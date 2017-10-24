@@ -1,0 +1,26 @@
+1. crispy forms for form validation:
+
+    pip install --upgrade django-crispy-forms
+    INSTALLED_APPS = (
+    ...
+    'crispy_forms',
+    )
+    {% load crispy_forms_tags %} #in html templates where you want to use crispy form
+
+
+2. use PIL (Python Imaging Library) or Pillow, to manage images
+    pip install Pillow==2.9.0
+    settings.py:
+        MEDIA_URL = '/media/'
+        MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+     urls.py:
+        from django.conf import settings
+        from django.conf.urls.static import static
+        urlpatterns = [
+                            #------
+                ]
+        if settings.DEBUG:
+            urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+3.social authentication:

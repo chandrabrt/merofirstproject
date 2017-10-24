@@ -1,0 +1,41 @@
+
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<title>{% block head_title %}update{% endblock %}</title>
+{% block body %}
+ {% if not request.user.is_superuser %}
+      <h1><center>OPPS!!!!!!</center></h1><br/>
+     <h2><center>You are in wrong page!!please <a href="{% url 'blog:blog_index' %}"> go back!!</a></center></h2>
+     {% else %}
+    <div class="container-fluid" >
+        <div class="row">
+
+            <div class="col-md-4">
+                {% if post.image %}
+                    <center><img src="{{ post.image.url }}" class="Responsive Image" style=" height:14em;width:20em "></center>
+                {% endif %}
+
+            </div>
+
+            <div class="col-md-7">
+
+
+                <form action="." method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {% include 'music/form-template.html' %}
+
+                    <button type="submit" class="save btn btn-primary btn-lg btn-block">Update post</button>
+                </form>
+
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    {% endif %}
+
+{% endblock body %}
+

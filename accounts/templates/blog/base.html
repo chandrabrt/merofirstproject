@@ -1,0 +1,81 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://use.fontawesome.com/c71329a727.js"></script>
+
+    <link rel="icon" href="../../../../favicon.ico">
+    <title>Welcome |{% block head_title %}{% endblock %}</title>
+
+    {% include 'head_css.html' %}
+    <style>
+        {% block style %}{% endblock %}
+    </style>
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example" style="background-color:#FAFAFA;min-height: 690px">
+
+{% load staticfiles %}
+<nav class="navbar navbar-expand-md navbar-dark fixed-top " style="background: #Fafafa;font-size: 30px;">
+
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon" style="color: blue">
+            <i class="fa fa-navicon fa-lg"></i>
+        </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'accounts:index' %}"style="padding-right: 23px;color: #274A5E">HOME <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:blog_index' %}"style="padding-right: 23px;color: #274A5E">BLOG</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:blog_contact' %}" style="padding-right: 23px;color: #274A5E">CONTACT</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:about' %}" style="padding-right: 23px;color: #274A5E">ABOUT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#"style="padding-right: 23px;"><div id="google_translate_element"></div><script type="text/javascript">
+                    function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr,hi,ml,ne,no,pa,ru,ur,zh-CN', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, multilanguagePage: true}, 'google_translate_element');
+                    }
+                </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                </a>
+            </li>
+
+        </ul>
+
+<a class="navbar-brand justify-content-end" href="{% url 'blog:about' %}" style="color:#274A5E">
+        C:/> Chandra Khadka
+    </a>
+
+    </div>
+</nav>
+
+
+{% block body %}
+    {% block jumbotron %}
+        <!-- jumbutron section-->
+    {% endblock %}
+
+    {% block content %}
+        <!-- content section-->
+    {% endblock %}
+
+
+    {% block footer %}
+
+    {% endblock %}
+    {% include 'javascript.html' %}
+    </body>
+{% endblock body %}
+</html>

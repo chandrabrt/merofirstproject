@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<nav class="navbar navbar-expand-md navbar-dark fixed-top " style="background: #F2F5F8;font-size: 30px;">
+<a class="navbar-brand justify-content-end" href="{% url 'blog:about' %}" style="color:#274A5E">
+                C:/> Chandra Khadka
+             </a>
+      <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon" style="color: blue">
+            <i class="fa fa-navicon fa-lg"></i>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item active">
+              <a class="nav-link" href="{% url 'accounts:index' %}"style="padding-right: 23px;color: #274A5E">HOME <span class="sr-only">(current)</span></a>
+          </li>
+
+            <li class="nav-item">
+            <a class="nav-link" href="#services" style="padding-right: 23px;color: #274A5E">SERVICES</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'blog:blog_index' %}"style="padding-right: 23px;color: #274A5E">BLOG</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:contact' %}" style="padding-right: 23px;color: #274A5E">CONTACT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#"style="padding-right: 23px;"><div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr,hi,ml,ne,no,pa,ru,ur,zh-CN', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, multilanguagePage: true}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </a>
+          </li>
+
+        </ul>
+
+          <div class="justify-content-end" style="padding-right:22px">
+              <div class="dropdown">
+                  {% if request.user.is_authenticated %}
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="about-us" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background: #383838">
+                          {{ user.username }}
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="about-us">
+                          <a class="dropdown-item" href="{% url 'accounts:password_change'%}"><i class="fa fa-key" aria-hidden="true"></i>
+                              Password Change</a>
+                          <a class="dropdown-item" href="{% url 'accounts:logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+Logout</a>
+                      </div>
+
+                  {% else %}
+<a class="btn btn-primary" href="{% url 'accounts:login' %}" role="button">Login now</a>
+                  {% endif %}
+              </div>
+          </div>
+
+
+
+      </div>
+    </nav>
