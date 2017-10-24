@@ -43,7 +43,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     # 'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
@@ -68,7 +67,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'merofirstproject.wsgi.application'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -117,14 +116,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), "merofirstproject/static_in_env", "static_root")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "merofirstproject/static_in_env", "static_root")
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, "static_in_pro", "our_static"),
+    os.path.join(BASE_DIR, "static_in_pro", "our_static"),
     # os.path.join(BASE_DIR, "static_in_env"),
     # '/var/www/static/',
 ]
