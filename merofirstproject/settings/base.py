@@ -12,7 +12,7 @@ SECRET_KEY = '+n=pp(r!lwac88zd2p^z8aw5n$qq9zv8n+%8h%-iw#&ves-q2c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['merofirstproject.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition

@@ -12,7 +12,7 @@ SECRET_KEY = '+n=pp(r!lwac88zd6732p^z8aw5n$qq9zv8n+%8h%-iw#&ves-q2c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['merofirstproject.herokuapp.com', '.fidgets.com']
+ALLOWED_HOSTS = ['merofirstproject.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
