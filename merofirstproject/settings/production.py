@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+n=pp(r!lwac88zd2p^z8aw5n$qq9zv8n+%8h%-iw#&ves-q2c'
+SECRET_KEY = '+n=pp(r!lwac88zd6732p^z8aw5n$qq9zv8n+%8h%-iw#&ves-q2c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
