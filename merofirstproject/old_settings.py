@@ -1,11 +1,7 @@
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '+n=pp(r!lwac88zd2p^z8aw5n$qq9zv8n+%8h%-iw#&ves-q2c'
@@ -118,16 +114,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "merofirstproject/static_in_env", "static_root")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static_in_pro", "our_static"),
-    # os.path.join(BASE_DIR, "static_in_env"),
+    os.path.join(BASE_DIR, "static"),
+    # os.path.join(BASE_DIR, "media"),
     # '/var/www/static/',
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "merofirstproject/static_in_env", "media_root")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
 # Crispy form tags Settings
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

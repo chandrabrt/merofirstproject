@@ -1,1 +1,1 @@
-web: gunicorn merofirstproject.wsgi
+web: gunicorn dj-project.wsgi
