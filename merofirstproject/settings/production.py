@@ -12,7 +12,7 @@ SECRET_KEY = '+n=pp(r!lwac88zd6732p^z8aw5n$qq9zv8n+%8h%-iw#&ves-q2c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['merofirstproject.herokuapp.com', '.fidgets.com']
 
 
 # Application definition
@@ -183,3 +183,13 @@ CKEDITOR_CONFIGS = {
         'toolbar': None,
     },
 }
+
+CORS_REPLACE_HTTPS_REFERER = True
+HOST_SCHEME                     = "https://"
+SECURE_PROXY_SSL_HEADER         = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT             = True
+SESSION_COOKIE_SECURE           = True
+CSRF_COOKIE_SECURE              = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS  = True
+SECURE_HSTS_SECONDS             = 1000000
+SECURE_FRAME_DENY               = True
