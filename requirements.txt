@@ -15,7 +15,7 @@ oauth==1.0.1
 oauthlib==2.0.6
 olefile==0.44
 pew==1.1.0
-Pillow==4.3.0
+Pillow==8.2.0
 pipenv==8.2.7
 
 psycopg2==2.7.3.1
